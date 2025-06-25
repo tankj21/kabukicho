@@ -1,31 +1,494 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Page</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <title>歌舞伎町サウンドマップ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+        
+        .controls {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .control-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .control-group label {
+            color: white;
+            font-weight: bold;
+            min-width: 80px;
+        }
+        
+        input, select, button {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        input, select {
+            background: rgba(255,255,255,0.9);
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(238, 90, 82, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(238, 90, 82, 0.4);
+        }
+        
+        .map-container {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        #map {
+            height: 600px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .pin-list {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .pin-list h3 {
+            color: white;
+            margin-top: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .pin-item {
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        
+        .pin-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .pin-info {
+            flex: 1;
+        }
+        
+        .pin-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .pin-coords {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .pin-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .play-btn, .delete-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        
+        .play-btn {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .play-btn:hover {
+            background: #45a049;
+        }
+        
+        .delete-btn {
+            background: #f44336;
+            color: white;
+        }
+        
+        .delete-btn:hover {
+            background: #da190b;
+        }
+        
+        .instructions {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        .instructions h3 {
+            margin-top: 0;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .instructions ol {
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .control-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .control-group label {
+                min-width: auto;
+            }
+            
+            input, select {
+                min-width: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Web Page</h1>
-    </header>
-    <main>
-        <section>
-            <h2>About Me</h2>
-            <p>This is a brief introduction about myself.</p>
-        </section>
-        <section>
-            <h2>My Projects</h2>
-            <ul>
-                <li>Project 1</li>
-                <li>Project 2</li>
-                <li>Project 3</li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 My Web Page</p>
-    </footer>
+    <div class="container">
+        <div class="header">
+            <h1>🎵 歌舞伎町サウンドマップ 🎵</h1>
+            <p>マップにピンを追加して、クリックで音楽を楽しもう！</p>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label>ピン名:</label>
+                <input type="text" id="pinName" placeholder="例: 新宿東口の音">
+            </div>
+            <div class="control-group">
+                <label>音の種類:</label>
+                <select id="soundType">
+                    <option value="beep">ビープ音</option>
+                    <option value="bell">ベル音</option>
+                    <option value="chime">チャイム音</option>
+                    <option value="click">クリック音</option>
+                    <option value="notification">通知音</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <button onclick="addPinMode()">📍 ピン追加モード</button>
+                <button onclick="clearAllPins()">🗑️ 全ピン削除</button>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+        
+        <div class="pin-list">
+            <h3>📍 追加されたピン一覧</h3>
+            <div id="pinListContainer">
+                <p style="color: rgba(255,255,255,0.7);">まだピンが追加されていません。上の「ピン追加モード」ボタンを押してマップをクリックしてください。</p>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>🎯 使い方</h3>
+            <ol>
+                <li><strong>ピン名を入力</strong>: 追加したいピンの名前を入力します</li>
+                <li><strong>音の種類を選択</strong>: ピンをクリックした時に再生される音を選びます</li>
+                <li><strong>「ピン追加モード」をクリック</strong>: ピン追加モードを有効にします</li>
+                <li><strong>マップをクリック</strong>: 好きな場所をクリックしてピンを追加します</li>
+                <li><strong>ピンをクリック</strong>: 追加されたピンをクリックすると音が再生されます</li>
+                <li><strong>ピン管理</strong>: 下のリストから個別に音を再生したり削除したりできます</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        let map;
+        let pins = [];
+        let addPinModeActive = false;
+        let audioContext;
+        
+        // 歌舞伎町の座標
+        const KABUKICHO_CENTER = { lat: 35.6944, lng: 139.7035 };
+        
+        // オーディオコンテキストの初期化
+        function initAudioContext() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+        
+        // 音を生成・再生する関数
+        function playSound(type) {
+            initAudioContext();
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            let frequency, duration, waveType;
+            
+            switch(type) {
+                case 'beep':
+                    frequency = 800;
+                    duration = 0.2;
+                    waveType = 'sine';
+                    break;
+                case 'bell':
+                    frequency = 1000;
+                    duration = 0.5;
+                    waveType = 'sine';
+                    break;
+                case 'chime':
+                    frequency = 523.25; // C5
+                    duration = 0.8;
+                    waveType = 'triangle';
+                    break;
+                case 'click':
+                    frequency = 1200;
+                    duration = 0.1;
+                    waveType = 'square';
+                    break;
+                case 'notification':
+                    frequency = 600;
+                    duration = 0.3;
+                    waveType = 'sine';
+                    break;
+                default:
+                    frequency = 800;
+                    duration = 0.2;
+                    waveType = 'sine';
+            }
+            
+            oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+            oscillator.type = waveType;
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + duration);
+        }
+        
+        // マップ初期化
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: KABUKICHO_CENTER,
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"weight": "2.00"}]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{"color": "#9c9c9c"}]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text",
+                        "stylers": [{"visibility": "on"}]
+                    }
+                ]
+            });
+            
+            // マップクリックイベント
+            map.addListener('click', function(event) {
+                if (addPinModeActive) {
+                    addPin(event.latLng);
+                }
+            });
+        }
+        
+        // ピン追加モードの切り替え
+        function addPinMode() {
+            addPinModeActive = !addPinModeActive;
+            const button = event.target;
+            
+            if (addPinModeActive) {
+                button.textContent = '✅ ピン追加モード有効 (マップをクリック)';
+                button.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+                map.setOptions({ cursor: 'crosshair' });
+            } else {
+                button.textContent = '📍 ピン追加モード';
+                button.style.background = 'linear-gradient(45deg, #ff6b6b, #ee5a52)';
+                map.setOptions({ cursor: 'default' });
+            }
+        }
+        
+        // ピンを追加
+        function addPin(location) {
+            const pinName = document.getElementById('pinName').value || `ピン ${pins.length + 1}`;
+            const soundType = document.getElementById('soundType').value;
+            
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: pinName,
+                animation: google.maps.Animation.DROP,
+                icon: {
+                    url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                        <svg width="30" height="40" viewBox="0 0 30 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 0C6.7 0 0 6.7 0 15c0 15 15 25 15 25s15-10 15-25C30 6.7 23.3 0 15 0z" fill="#ff6b6b"/>
+                            <circle cx="15" cy="15" r="8" fill="white"/>
+                            <text x="15" y="19" text-anchor="middle" fill="#ff6b6b" font-size="12" font-weight="bold">♪</text>
+                        </svg>
+                    `),
+                    scaledSize: new google.maps.Size(30, 40),
+                    anchor: new google.maps.Point(15, 40)
+                }
+            });
+            
+            const pinData = {
+                id: Date.now(),
+                name: pinName,
+                position: location,
+                soundType: soundType,
+                marker: marker
+            };
+            
+            // マーカークリックイベント
+            marker.addListener('click', function() {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+                setTimeout(() => marker.setAnimation(null), 1000);
+                playSound(soundType);
+            });
+            
+            pins.push(pinData);
+            updatePinList();
+            
+            // 入力フィールドをクリア
+            document.getElementById('pinName').value = '';
+            
+            // ピン追加モードを無効化
+            addPinModeActive = false;
+            const button = document.querySelector('button');
+            button.textContent = '📍 ピン追加モード';
+            button.style.background = 'linear-gradient(45deg, #ff6b6b, #ee5a52)';
+            map.setOptions({ cursor: 'default' });
+        }
+        
+        // ピンリストを更新
+        function updatePinList() {
+            const container = document.getElementById('pinListContainer');
+            
+            if (pins.length === 0) {
+                container.innerHTML = '<p style="color: rgba(255,255,255,0.7);">まだピンが追加されていません。上の「ピン追加モード」ボタンを押してマップをクリックしてください。</p>';
+                return;
+            }
+            
+            container.innerHTML = pins.map(pin => `
+                <div class="pin-item">
+                    <div class="pin-info">
+                        <div class="pin-name">${pin.name}</div>
+                        <div class="pin-coords">
+                            緯度: ${pin.position.lat().toFixed(6)}, 
+                            経度: ${pin.position.lng().toFixed(6)}
+                        </div>
+                    </div>
+                    <div class="pin-actions">
+                        <button class="play-btn" onclick="playSound('${pin.soundType}')">🔊 再生</button>
+                        <button class="delete-btn" onclick="deletePin(${pin.id})">🗑️ 削除</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // ピンを削除
+        function deletePin(pinId) {
+            const pinIndex = pins.findIndex(pin => pin.id === pinId);
+            if (pinIndex !== -1) {
+                pins[pinIndex].marker.setMap(null);
+                pins.splice(pinIndex, 1);
+                updatePinList();
+            }
+        }
+        
+        // 全ピンを削除
+        function clearAllPins() {
+            if (pins.length === 0) return;
+            
+            if (confirm('全てのピンを削除しますか？')) {
+                pins.forEach(pin => pin.marker.setMap(null));
+                pins = [];
+                updatePinList();
+            }
+        }
+        
+        // Google Maps API読み込み完了時に実行
+        window.initMap = initMap;
+    </script>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_tM3_7jNh8C4Zot4OZFPkJTaexQ06zHs&callback=initMap&language=ja"></script>
+</body>
 </html>
