@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "ゴジラヘッド",
+    "description": "新宿の空に現れた守り神",
+    "image": "https://placehold.co/100x100/f0f2f5/FF69B4?text=ゴジラ",
+    "audio": "./audio/godzilla.mp3",
+    "lat": 35.6953,
+    "lng": 139.7006
+  },
+  {
+    "id": 2,
+    "title": "新宿ゴールデン街",
+    "description": "昭和の香り残る飲み屋街",
+    "image": "https://placehold.co/100x100/f0f2f5/FF69B4?text=ゴールデン街",
+    "audio": "./audio/golden-gai.mp3",
+    "lat": 35.6946,
+    "lng": 139.7034
+  },
+  {
+    "id": 3,
+    "title": "稲荷鬼王神社",
+    "description": "鬼を祀る珍しい神社",
+    "image": "https://placehold.co/100x100/f0f2f5/FF69B4?text=稲荷鬼王神社",
+    "audio": "./audio/kio-jinja.mp3",
+    "lat": 35.6972,
+    "lng": 139.7042
+  },
+  {
+    "id": 4,
+    "title": "東急歌舞伎町タワー",
+    "description": "エンタメの新しい発信地",
+    "image": "https://placehold.co/100x100/f0f2f5/FF69B4?text=東急歌舞伎町タワー",
+    "audio": "./audio/kabukicho-tower.mp3",
+    "lat": 35.6959,
+    "lng": 139.7005
+  }
+]
