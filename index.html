@@ -28,17 +28,19 @@
 
     <!-- ========== メインページ ========== --><main id="main-page" class="w-full">
 
-        <header class="bg-yellow-100 shadow-sm sticky top-0 z-50">
+        <header id="footer" class="bg-yellow-100 shadow-sm sticky top-0 z-50">
 
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
 
                 <div class="h-10">
 
-                    <img src="https://github.com/tankj21/-/blob/main/source/img/kabuki_title.png?raw=true" alt="古今歌舞伎町音声巡り" class="h-full object-contain">
+                    <img src="https://github.com/tankj21/kabukicho/blob/main/source/img/kabuki_title.png?raw=true" alt="古今歌舞伎町音声巡り" class="h-full object-contain">
 
                 </div>
 
-                <button id="start-guide-btn-main" class="btn-primary hover:bg-pink-600 font-bold py-2 px-4 rounded-full transition duration-300">
+                <div class="flex space-x-4 md:space-x6">
+                    <a href="shop-list.html" class="btn-primary py-2 px-4 hover:text-neutral-400 font-bold rounded-full transition duration-300"> スポット一覧</a>
+                <button id="start-guide-btn-main" class="btn-primary hover:text-neutral-400 font-bold py-2 px-4 rounded-full transition duration-300">
 
                     ガイド開始
 
@@ -54,26 +56,26 @@
 
             <!-- ヒーローセクション --><section class="text-center py-20 lg:py-24">
 
-                <div class="h-20 md:h-28 mx-auto mb-6">
+                <div class="h-20 md:h-28 mx-auto mb-10">
 
-                    <img src="https://github.com/tankj21/-/blob/main/source/img/kabuki_title.png?raw=true" alt="古今歌舞伎町音声巡り" class="h-full object-contain mx-auto">
+                    <img src="https://github.com/tankj21/kabukicho/blob/main/source/img/kabuki_title.png?raw=true" alt="古今歌舞伎町音声巡り" class="h-full object-contain mx-auto">
 
                 </div>
 
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
 
                     昼の顔、夜の顔。常に変化し続ける街、歌舞伎町。
 
                     <br>この街の歴史、文化、そして隠れた魅力を、あなたの耳で巡りませんか？
 
                 </p>
-                <div class ="flex flex-col items-center justify-center gap-4">
-                <button id="start-guide-btn-hero" class="btn-primary font-black py-3 px-6 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                <div class ="flex flex-col items-center justify-center gap-6 mt-5">
+                <button id="start-guide-btn-hero" class="btn-primary font-black py-3 px-6 rounded-full text-lg transition duration-300 transform hover:scale-105 mt-5">
 
                     今すぐガイドを始める
 
                 </button>
-                <a href="shop-list.html" class="btn-shops">
+                <a href="shop-list.html" class="btn-shops hover:bg-amber-100">
                     店舗一覧を見る
                 </a>
                 </div   >
@@ -248,9 +250,9 @@
 
         
 
-        <footer class="text-center py-8 mt-16 footer">
+        <footer id="footer" class="text-center py-8 mt-16 footer">
 
-            <p class="text-sm">&copy; 2025 古今歌舞伎町音声巡り. All Rights Reserved.</p>
+            <p class="text-sm">&copy; 2025 東京国際工科専門職大学. All Rights Reserved.</p>
 
         </footer>
 
@@ -260,13 +262,13 @@
 
     <!-- ========== ガイドアプリページ ========== --><div id="guide-page" class="hidden w-full min-h-screen flex flex-col">
 
-        <header class="guide-page">
+        <header id="footer" class="guide-page">
 
-            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <nav id="footer" class="container mx-auto px-6 py-4 flex justify-between items-center">
 
                 <h1 class="text-2xl font-bold section-title">音声ガイド</h1>
 
-                <button id="back-to-main-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-full transition duration-300">
+                <button id="back-to-main-btn" class="bg-gray-200 hover:bg-orange-300 text-white font-bold py-2 px-4 rounded-full transition duration-300">
 
                     メインに戻る
 
@@ -294,7 +296,7 @@
 
                 <div class="space-y-4 max-h-[calc(100vh-250px)] overflow-y-auto pr-2">
 
-                    <!-- スポットカード 1 --><div class="card p-4 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-gray-50 transition-colors">
+                    <!-- スポットカード 1 --><div class="card p-4 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-amber-100 transition-colors">
 
                         <img src="https://placehold.co/100x100/f0f2f5/FF69B4?text=ゴジラ" alt="ゴジラヘッド" class="w-20 h-20 rounded-md object-cover">
 
@@ -306,7 +308,7 @@
 
                         </div>
 
-                        <button class="play-btn btn-primary w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-pink-600 transition-colors">
+                        <button class="play-btn btn-primary w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-orange-600 transition-colors">
 
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
 
@@ -314,7 +316,7 @@
 
                     </div>
 
-                    <!-- スポットカード 2 --><div class="card p-4 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-gray-50 transition-colors">
+                    <!-- スポットカード 2 --><div class="card p-4 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-amber-100 transition-colors">
 
                         <img src="https://placehold.co/100x100/f0f2f5/FF69B4?text=ゴールデン街" alt="新宿ゴールデン街" class="w-20 h-20 rounded-md object-cover">
 
@@ -326,7 +328,7 @@
 
                         </div>
 
-                        <button class="play-btn btn-primary w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-pink-600 transition-colors">
+                        <button class="play-btn btn-primary w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-orange-600 transition-colors">
 
                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
 
@@ -334,7 +336,7 @@
 
                     </div>
 
-                    <!-- スポットカード 3 --><div class="card p-4 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-gray-50 transition-colors">
+                    <!-- スポットカード 3 --><div class="card p-4 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-amber-100 transition-colors">
 
                         <img src="https://placehold.co/100x100/f0f2f5/FF69B4?text=稲荷鬼王神社" alt="稲荷鬼王神社" class="w-20 h-20 rounded-md object-cover">
 
@@ -346,7 +348,7 @@
 
                         </div>
 
-                        <button class="play-btn btn-primary w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-pink-600 transition-colors">
+                        <button class="play-btn btn-primary w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-orange-600 transition-colors">
 
                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
 
@@ -354,7 +356,7 @@
 
                     </div>
 
-                    <!-- スポットカード 4 --><div class="card p-4 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-gray-50 transition-colors">
+                    <!-- スポットカード 4 --><div class="card p-4 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-amber-100 transition-colors">
 
                         <img src="https://placehold.co/100x100/f0f2f5/FF69B4?text=東急歌舞伎町タワー" alt="東急歌舞伎町タワー" class="w-20 h-20 rounded-md object-cover">
 
@@ -366,7 +368,7 @@
 
                         </div>
 
-                        <button class="play-btn btn-primary w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-pink-600 transition-colors">
+                        <button class="play-btn btn-primary w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 hover:bg-orange-600 transition-colors">
 
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
 

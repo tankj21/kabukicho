@@ -68,3 +68,9 @@ header {
 		width: auto;
 	}
 }
+#footer{
+	background-color: #fff4d1;
+}
+#back-to-main-btn{
+	background-color: #fa520f;
+}
