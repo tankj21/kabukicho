@@ -91,3 +91,10 @@ header {
 .bg-1{
 	background-image: url('https://photock.jp/photo/big_webp/photo0000-3142.webp');
 }
+
+.toumei-bg{
+	background-color: transparent;
+}
+.is-hidden{
+	display: none;
+}
