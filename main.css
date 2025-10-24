@@ -74,3 +74,20 @@ header {
 #back-to-main-btn{
 	background-color: #fa520f;
 }
+.bg-fix{
+	min-height: 600px;
+	width: auto;
+	background-attachment: fixed;
+	background-position: bottom;
+	background-repeat: no-repeat;
+	background-size: auto;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	text-shadow: 2px 2px 4px #000;
+}
+.bg-1{
+	background-image: url('https://photock.jp/photo/big_webp/photo0000-3142.webp');
+}

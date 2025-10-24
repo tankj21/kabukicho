@@ -1,0 +1,45 @@
+/* ページ全体の余白をリセット */
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* 固定背景セクションの共通スタイル */
+.fixed-bg {
+    /* 高さを指定（ビューポートの高さ100%など） */
+    min-height: 500px;
+    
+    /* --- ここが重要 --- */
+    /* 背景画像を固定する */
+    background-attachment: fixed;
+    /* ------------------ */
+
+    /* 背景画像の表示設定（きれいに見せるため） */
+    background-position: center; /* 中央に配置 */
+    background-repeat: no-repeat; /* 繰り返さない */
+    background-size: cover;       /* 要素全体を覆うように拡大縮小 */
+
+    /* 中のテキストを見やすくするためのオマケ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px #000;
+}
+
+/* 通常のコンテンツセクションのスタイル */
+.content {
+    height: 400px; /* スクロール距離を稼ぐための高さ */
+    padding: 40px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* セクションごとに違う画像を指定 */
+.section1 {
+    background-image: url('https://photock.jp/photo/big_webp/photo0000-3142.webp');
+}
+
+.section2 {
+    background-image: url('https://source.unsplash.com/random/1600x900?city');
+}
