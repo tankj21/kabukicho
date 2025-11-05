@@ -13,42 +13,47 @@
 <body id="gradation-simple" class="main">
 
     <main id="main-page" class="w-full">
-        <header id="footer" class="bg-yellow-100 shadow-sm sticky top-0 z-50">
-            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <div class="h-10">
-                    <img src="https://github.com/tankj21/kabukicho/blob/main/source/img/kabuki_title.png?raw=true" alt="古今歌舞伎町音声巡り" class="h-full object-contain">
+    <header id="footer" class="bg-yellow-100 shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="h-10">
+                 <img src="https://github.com/tankj21/kabukicho/blob/main/source/img/kabuki_title.png?raw=true" alt="古今歌舞伎町音声巡り" class="h-full object-contain">
                 </div>
                 <button id="start-guide-btn-main" class="btn-primary hover:text-neutral-400 font-bold py-2 px-4 border border-indigo-900 duration-300">
                     ガイド開始
                 </button>
             </nav>
         </header>
-
+    <div class="bg-fix bg-1">
         <div class="container mx-auto px-6">
-            <div class="bg-fix bg-1">
-                <img src="https://github.com/tankj21/kabukicho/blob/main/source/img/kabuki_title.png?raw=true" alt="古今歌舞伎町音声巡り" class="h-full object-contain mx-auto">
-            </div>
-            <img src="source/img/snazzy-image.png">
-            <section class="text-center py-20 lg:py-24s">
-                <p id="big-slash">//////////////////</p>
-                <p class="text-lg max-w-2xl mx-auto mb-12 text-shadows">
-                    昼の顔、夜の顔。常に変化し続ける街、歌舞伎町。
-                    <br>この街の歴史、文化、そして隠れた魅力を、あなたの耳で巡りませんか？
-                </p>
-                
-                <div class ="flex flex-col items-center justify-center gap-6 mt-5">
-                <button id="start-guide-btn-hero" class="btn-primary font-black py-3 px-6 border border-indigo-900 text-lg transition duration-300 transform hover:scale-105 mt-5">
+            <img src="https://github.com/tankj21/kabukicho/blob/main/source/img/kabuki_title.png?raw=true" alt="古今歌舞伎町音声巡り" class="h-full object-contain mx-auto">
+        </div>
+    </div>
+    
+    <div class="container mx-auto px-6">
+        <section class="text-center py-20 lg:py-24s">
+            <p id="big-slash">//////////////////</p>
+            <p class="text-2xl max-w-2xl mx-auto mb-20 text-shadows">
+                昼の顔、夜の顔。常に変化し続ける街、歌舞伎町。
+                <br>この街の歴史、文化、そして隠れた魅力を
+                <br>あなたの耳で巡りませんか？
+            </p>
+            <div class ="flex flex-col items-center justify-center gap-6 mt-5">
+                <button id="start-guide-btn-hero" class="btn-primary font-black py-8 px-20 border border-indigo-900 text-2xl transition duration-300 transform hover:scale-105 mt-5">
                     今すぐガイドを始める
                 </button>
-                
-                </section>
-
-            <div class="bg-fix bg-2">
-                test text
             </div>
+        </section>
+    </div>
 
-            <section class="py-16 text-shadows">
-                <h2 class="text-3xl font-bold text-center mb-10 section-title text-shadows">「古今歌舞伎町音声巡り」の３つの特徴</h2>
+    <div class="bg-fix bg-2 relative">
+        <div class="container mx-auto px-6 text-2xl text-shadows absolute bottom-10 left-0">
+            「古今歌舞伎町音声巡り」の３つの特徴
+        </div>
+    </div>
+
+    <div class="container mx-auto px-6">
+        <section class="py-16 text-shadows">
+                <h2 class="text-3xl font-bold text-center mb-10 section-title text-shadows"></h2>
                 <div class="grid md:grid-cols-3 gap-8 text-center">
                     <div class="card rounded-lg p-6">
                         <div class="text-4xl mb-4">🗣️</div>
@@ -67,8 +72,10 @@
                     </div>
                 </div>
             </section>
-            
-            <section class="py-16">
+    </div>
+
+    <div class="container mx-auto px-6">
+        <section class="py-16">
                 <h2 class="text-3xl font-bold text-center mb-12 section-title text-shadows">使い方</h2>
                 <div class="rounded-lg p-6">
                 <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
@@ -91,12 +98,16 @@
                     </div>
                 </div>
             </section>
+    </div>
 
-            <section class="py-16">
-                <div class="bg-fix bg-3">
-                    画像セクション
-                </div>
-                <h2 class="text-3xl font-bold text-center mb-10 section-title">最新ニュース</h2>
+    <div class="bg-fix bg-3">
+        <div class="container mx-auto px-6">
+            画像セクション
+        </div>
+    </div>
+    <div class="container mx-auto px-6">
+        <section class="py-16">
+                        <h2 class="text-3xl font-bold text-center mb-10 section-title">最新ニュース</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="card rounded-lg overflow-hidden group">
                         <img src="https://placehold.co/600x400/f0f2f5/FF69B4?text=イベント" alt="イベントの画像" class="w-full h-40 object-cover group-hover:opacity-80 transition-opacity">
@@ -132,23 +143,28 @@
                     </div>
                 </div>
             </section>
-            
-            <section class="py-16">
-                <div class="bg-fix bg-4">
-                    画像(お店の外の画像とか？)
-                </div>
-                <div class ="flex flex-col items-center justify-center gap-6 mt-5">
-                    <a href="shop-list.html" class="btn-shops hover:bg-amber-100">
-                        店舗一覧を見る (仮置き)
-                    </a>
-                </div>
-            </section>
+    </div>
+    
+        <div class="bg-fix bg-4">
+        <div class="container mx-auto px-6">
+            画像(お店の外の画像とか？)
         </div>
+    </div>
+    <div class="container mx-auto px-6">
+        <section class="py-16">
+                        <div class ="flex flex-col items-center justify-center gap-6 mt-5">
+                <a href="shop-list.html" class="btn-shops hover:bg-amber-100">
+                    店舗一覧を見る (仮置き)
+                </a>
+            </div>
+        </section>
+    </div>
+
         
-        <footer id="footer" class="text-center py-8 mt-16 footer">
-            <p class="text-sm">&copy; 2025 東京国際工科専門職大学. All Rights Reserved.</p>
-        </footer>
-    </main>
+    <footer id="footer" class="text-center py-8 mt-16 footer">
+        <p class="text-sm">&copy; 2025 東京国際工科専門職大学. All Rights Reserved.</p>
+    </footer>
+</main>
 
     <div id="guide-page" class="hidden w-full min-h-screen flex flex-col">
         <header id="footer" class="guide-page">
