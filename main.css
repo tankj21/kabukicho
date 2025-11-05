@@ -1,47 +1,47 @@
+/*#2D328D, 45, 50, 141*/
+/*#010101, 1, 1, 1*/
+/*#333333, 51, 51, 51*/
 body {
     font-family: 'Inter', 'Noto Sans JP', sans-serif;
-    background-color: #efd795; /* 明るい背景色 */
+    background-color: #4f4e4d; /* 明るい背景色 */
     color: #333; /* 暗めのテキスト色 */
 }
 header {
-    background-color: #efd795; /* 明るいヘッダー背景 */
-    border-bottom: 1px solid #e0e0e0; /* ヘッダー下線 */
+    background-color: #4f4e4d; /* 明るいヘッダー背景 */
+    border-bottom: 1px solid #4f4e4d; /* ヘッダー下線 */
 }
 .section-title {
     color: #2c3e50; /* セクションタイトル色 */
 }
 .card {
-    background-color: #fff4d1; /* カード背景色 */
+    background-color: #1447E6; /* カード背景色 */
     border: 1px solid #e0e0e0; /* カードボーダー */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* カード影 */
 }
 .btn-primary {
-    background-color: #fa520f; /* ピンク系 */
+    background-color: #1447e6; /* ピンク系 */
     color: white;
 }
 .btn-primary:hover {
-    background-color: #ff690b; /* 濃いピンク系 */
-}
-.text-accent {
-    color: #FF69B4; /* アクセントカラー */
+    background-color: #1447e6; /* 濃いピンク系 */
 }
 .text-muted {
     color: #6c757d; /* ミュートテキスト色 */
 }
 .footer {
-    background-color: #efd795;
+    background-color: #010101;
     color: #6c757d;
 }
 #player-bar {
-    background-color: #efd795; /* プレーヤーバーの背景色 */
-    border-top: 1px solid #e0e0e0; /* プレーヤーバー上線 */
+    background-color: #010101; /* プレーヤーバーの背景色 */
+    border-top: 1px solid #010101; /* プレーヤーバー上線 */
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
 }
 .step-number{
 	background-color: #cfffb8;
 }
 .main{
-	background-color: #fefce8;
+	background-color: ;
 }
 .btn-shops{
 	background-color: #ffffff;
@@ -69,7 +69,7 @@ header {
 	}
 }
 #footer{
-	background-color: #fff4d1;
+	background-color: #222222;
 }
 #back-to-main-btn{
 	background-color: #fa520f;
@@ -92,9 +92,22 @@ header {
 	background-image: url('https://photock.jp/photo/big_webp/photo0000-3142.webp');
 }
 
+.bg-2{
+	background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Kabukicho_red_gate_and_colorful_neon_street_signs_at_night%2C_Shinjuku%2C_Tokyo%2C_Japan.jpg/1280px-Kabukicho_red_gate_and_colorful_neon_street_signs_at_night%2C_Shinjuku%2C_Tokyo%2C_Japan.jpg');
+}
+.bg-3{
+	background-image: url('');
+}
 .toumei-bg{
 	background-color: transparent;
 }
 .is-hidden{
 	display: none;
+}
+#gradation-simple{
+	background: linear-gradient(#747171, #010101);
+}
+.text-shadows{
+	color: white;
+	text-shadow: 3px 2px 6cm #222;
 }
