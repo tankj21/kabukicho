@@ -87,10 +87,15 @@ header {
 	color: white;
 	text-shadow: 2px 2px 4px #000;
 }
-
+@media (max-width: 767px) {
+	.bg-fix {
+		min-height: 400px;
+	}
+}
 @media (min-width: 1024px) {
 	.gb-fix {background-attachment: fixed;}
 }
+
 .bg-1{
 	background-image: url('https://photock.jp/photo/big_webp/photo0000-3142.webp');
 	background-size: cover;
