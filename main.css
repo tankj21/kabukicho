@@ -89,8 +89,8 @@ header {
 }
 @media (max-width: 767px) {
 	.bg-fix {
-		height: auto;
-		width: 10%;
+		height: 10%;
+		width: auto;
 	}
 }
 @media (min-width: 1024px) {
