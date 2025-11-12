@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ガイドアプリ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Interフォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Interをデフォルト、日本語はNoto Sans JPを優先 */
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* 画面全体の高さを確保 */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 画面コンテナ */
+        .app-container {
+            max-width: 420px; /* モバイル画面サイズに制限 */
+            height: 100%; /* bodyの高さ全体を占める */
+            margin: 0 auto;
+            border-left: 1px solid #e5e7eb;
+            border-right: 1px solid #e5e7eb;
+            overflow: hidden; /* スクロールを内部で制御 */
+            position: relative;
+        }
+
+        /* ページセクション */
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease-in-out;
+            background-color: white; /* ページが重なった時に透けないように */
+        }
+
+        /* ページ非表示 */
+        .page.hidden {
+            transform: translateX(100%);
+        }
+        .page#mainPage.hidden {
+            transform: translateX(-100%);
+        }
+
+        /* メニューモーダル */
+        #menuModal {
+            transition: transform 0.3s ease-in-out;
+        }
+        #menuModal.hidden {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-100"> <!-- flex, items-center, justify-center を削除 -->
+
+    <!-- アプリ全体のコンテナ -->
+    <div class="app-container shadow-lg"> <!-- bg-white は .page に移動 -->
+
+        <!-- ===== メインページ ===== -->
+        <div id="mainPage" class="page">
+            <!-- Header -->
+            <header class="border-b border-blue-300 bg-blue-100 p-4 flex items-center justify-between flex-shrink-0">
+                <h1 class="text-xl font-bold text-green-700 bg-green-200 px-4 py-1 rounded">Title</h1>
+                <button id="menuButtonMain" class="p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </header>
+            
+            <!-- Content -->
+            <main class="flex-1 p-6 overflow-y-auto">
+                <div class="space-y-4">
+                    <div class="h-8 bg-gray-200 rounded"></div>
+                    <div class="h-8 bg-gray-200 rounded w-5/6"></div>
+                    <div class="h-8 bg-gray-200 rounded w-3/4"></div>
+                </div>
+                
+                <button id="goToDetailButton" class="mt-8 w-full bg-purple-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-purple-700 transition duration-300">
+                    ガイドを開始
+                </button>
+            </main>
+            
+            <!-- Footer -->
+            <footer class="border-t border-teal-300 bg-teal-100 p-4 text-center flex-shrink-0">
+                <p class="text-sm text-teal-800">フッター</p>
+            </footer>
+        </div>
+
+        <!-- ===== 詳細ページ (Map Page) ===== -->
+        <div id="detailPage" class="page hidden">
+            <!-- Header -->
+            <header class="border-b border-blue-300 bg-blue-100 p-4 flex items-center justify-between flex-shrink-0">
+                <button id="backButton" class="p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <h1 class="text-xl font-bold">ガイド詳細</h1>
+                <button id="menuButtonDetail" class="p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </header>
+            
+            <!-- Content (スクロール領域) -->
+            <!-- プレーヤーとフッターの高さを考慮して、padding-bottomを追加 -->
+            <main class="flex-1 overflow-y-auto bg-gray-50 pb-32"> <!-- pb-32 (8rem) を追加 -->
+                <!-- Map Box -->
+                <div class="m-4 h-64 bg-yellow-200 border border-yellow-400 rounded-lg flex items-center justify-center">
+                    <p class="text-yellow-800 text-lg font-semibold">Map Box</p>
+                </div>
+                
+                <!-- 案内テキスト -->
+                <div class="px-4 pb-4">
+                    <h2 class="text-lg font-semibold mb-2">歩いている感じのままMap</h2>
+                    <p class="text-gray-600">＋＋＋ みたいな感じ？</p>
+                </div>
+                
+                <!-- Links -->
+                <nav class="px-4 space-y-2">
+                    <a href="#" class="block p-4 bg-green-100 border border-green-300 text-green-800 rounded-lg shadow-sm hover:bg-green-200 transition">
+                        Link 1: スポット情報
+                    </a>
+                    <a href="#" class="block p-4 bg-green-100 border border-green-300 text-green-800 rounded-lg shadow-sm hover:bg-green-200 transition">
+                        Link 2: 関連情報
+                    </a>
+                </nav>
+
+                <!-- スクロール領域確保のためのダミー要素 (オプション) -->
+                <!-- pb-32で十分なはずですが、必要に応じて追加 -->
+                <!-- <div class="h-4"></div> -->
+            </main>
+            
+            <!-- Player (absoluteでmainの上に配置) -->
+            <!-- bottom-16 (フッターの高さ分) に変更 -->
+            <div class="absolute bottom-16 left-0 w-full p-4 bg-pink-100 border-t border-b border-pink-300 z-10">
+                <div class="flex items-center justify-between">
+                    <p class="font-semibold text-pink-800">音声ガイド再生中...</p>
+                    <div class="flex items-center space-x-2">
+                        <button class="text-pink-600">
+                            <!-- 再生/一時停止アイコン (例) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer (absoluteで最下部に配置) -->
+            <!-- h-16 (4rem) の高さを想定 -->
+            <footer class="absolute bottom-0 left-0 w-full border-t border-teal-300 bg-teal-100 p-4 text-center z-10 h-16">
+                <p class="text-sm text-teal-800">フッター</p>
+            </footer>
+        </div>
+
+        <!-- ===== Menu Modal ===== -->
+        <div id="menuModal" class="page hidden bg-white border-l border-gray-300 shadow-xl" style="transform: translateX(100%); z-index: 50;">
+            <!-- Header -->
+            <header class="p-4 flex items-center justify-between border-b flex-shrink-0">
+                <h2 class="text-xl font-bold">Menu</h2>
+                <button id="closeMenuButton" class="p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </header>
+            
+            <!-- Menu Content -->
+            <nav class="flex-1 p-6 overflow-y-auto">
+                <ul class="space-y-4">
+                    <li><a href="#" class="block py-2 text-lg text-gray-700 hover:text-blue-600">メニュー項目 1</a></li>
+                    <li><a href="#" class="block py-2 text-lg text-gray-700 hover:text-blue-600">メニュー項目 2</a></li>
+                    <li><a href="#" class="block py-2 text-lg text-gray-700 hover:text-blue-600">メニュー項目 3</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainPage = document.getElementById('mainPage');
+            const detailPage = document.getElementById('detailPage');
+            const menuModal = document.getElementById('menuModal');
+
+            const goToDetailButton = document.getElementById('goToDetailButton');
+            const backButton = document.getElementById('backButton');
+            
+            const menuButtonMain = document.getElementById('menuButtonMain');
+            const menuButtonDetail = document.getElementById('menuButtonDetail');
+            const closeMenuButton = document.getElementById('closeMenuButton');
+
+            // 詳細ページへ移動
+            goToDetailButton.addEventListener('click', () => {
+                mainPage.classList.add('hidden');
+                detailPage.classList.remove('hidden');
+            });
+
+            // メインページへ戻る
+            backButton.addEventListener('click', () => {
+                detailPage.classList.add('hidden');
+                mainPage.classList.remove('hidden');
+            });
+
+            // メニューを開く
+            const openMenu = () => {
+                menuModal.classList.remove('hidden');
+            };
+            menuButtonMain.addEventListener('click', openMenu);
+            menuButtonDetail.addEventListener('click', openMenu);
+
+            // メニューを閉じる
+            closeMenuButton.addEventListener('click', () => {
+                menuModal.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
