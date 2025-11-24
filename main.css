@@ -14,16 +14,16 @@ header {
     color: #2c3e50; /* セクションタイトル色 */
 }
 .card {
-    background-color: #1447E6; /* カード背景色 */
+    background-color: #dc4043; /* カード背景色 */
     border: 1px solid #e0e0e0; /* カードボーダー */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* カード影 */
 }
 .btn-primary {
-    background-color: #1447e6; /* ピンク系 */
+    background-color: #dc4043; /* ピンク系 */
     color: white;
 }
 .btn-primary:hover {
-    background-color: #1447e6; /* 濃いピンク系 */
+    background-color: #dc4043; /* 濃いピンク系 */
 }
 .footer {
     background-color: #262626;
@@ -51,12 +51,12 @@ header {
 	width: auto;
 	height: 450px;
 	overflow: hidden;
-	
+
 	background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Kabukicho_red_gate_and_colorful_neon_street_signs_at_night%2C_Shinjuku%2C_Tokyo%2C_Japan.jpg/1280px-Kabukicho_red_gate_and_colorful_neon_street_signs_at_night%2C_Shinjuku%2C_Tokyo%2C_Japan.jpg');
 	background-repeat: no-repeat;
 
 	background-size: cover;
-	background-position: 0px -230px;
+	background-position: 0px -200px;
 }
 .is-hidden{
 	display: none;
