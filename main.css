@@ -4,11 +4,11 @@
 body {
     font-family: 'Inter', 'Noto Sans JP', sans-serif;
     background-color: #4f4e4d; /* 明るい背景色 */
-    color: #333; /* 暗めのテキスト色 */
+    color: #232323; /* 暗めのテキスト色 */
 }
 header {
-    background-color: #4f4e4d; /* 明るいヘッダー背景 */
-    border-bottom: 1px solid #4f4e4d; /* ヘッダー下線 */
+    background-color: #262626; /* 明るいヘッダー背景 */
+    border-bottom: 1px solid #262626; /* ヘッダー下線 */
 }
 .section-title {
     color: #2c3e50; /* セクションタイトル色 */
@@ -25,12 +25,9 @@ header {
 .btn-primary:hover {
     background-color: #1447e6; /* 濃いピンク系 */
 }
-.text-muted {
-    color: #6c757d; /* ミュートテキスト色 */
-}
 .footer {
-    background-color: #010101;
-    color: #6c757d;
+    background-color: #262626;
+    color: #757575;
 }
 #player-bar {
     background-color: #010101; /* プレーヤーバーの背景色 */
@@ -40,34 +37,7 @@ header {
 .step-number{
 	background-color: #cfffb8;
 }
-.main{
-	background-image: url("https://raw.githubusercontent.com/tankj21/kabukicho/refs/heads/main/source/img/snazzy-image.png");
-}
-.btn-shops{
-	background-color: #ffffff;
-	border-width: 2px;
-	border-color: #f0a55b;
-	color: #f0a55b;
-	font-weight: 700;
-	padding-top: 0.75rem;
-	padding-bottom: 0.75rem;
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
-	border-radius: 9999px;
-	font-size: 1.125rem;
-	transition-property: all;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	transition-duration: 300ms;
-	width: 100%;	
-}
-.btn-shops:hover {
-	background-color: #fdf2f8;
-}
-@media (min-width: 768px) {
-	.btn-shops {
-		width: auto;
-	}
-}
+
 #footer{
 	background-color: #222222;
 }
@@ -75,56 +45,22 @@ header {
 	background-color: #fa520f;
 }
 .bg-fix{
-	min-height: 600px;
-	width: auto;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: white;
-	text-shadow: 2px 2px 4px #000;
+	max-height: 600px;
 }
-@media (max-width: 767px) {
-	.bg-fix {
-		height: auto;
-		width: auto;
-	}
-}
-@media (min-width: 1024px) {
-	.bg-fix {
-		background-attachment: fixed;
-	}
-}
-
-.bg-1{
-	background-image: url('https://photock.jp/photo/big_webp/photo0000-3142.webp');
-	background-size: cover;
-	background-position: center;
-}
-
 .bg-2{
+	width: auto;
+	height: 450px;
+	overflow: hidden;
 	background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Kabukicho_red_gate_and_colorful_neon_street_signs_at_night%2C_Shinjuku%2C_Tokyo%2C_Japan.jpg/1280px-Kabukicho_red_gate_and_colorful_neon_street_signs_at_night%2C_Shinjuku%2C_Tokyo%2C_Japan.jpg');
-	background-position: top;
-}
-.bg-3{
-	background-image: url('');
-}
-.toumei-bg{
-	background-color: transparent;
+	background-repeat: no-repeat;
+
+	background-size: cover;
+	background-position: 0px -230px;
 }
 .is-hidden{
 	display: none;
 }
-body#gradation-simple{
-	background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url("https://raw.githubusercontent.com/tankj21/kabukicho/refs/heads/main/source/img/image.png");
-	background-attachment: fixed;
-}
-
+/*テキストに影つける用*/
 .text-shadows{
 	color: white;
 	text-shadow: 3px 2px 6px #222;

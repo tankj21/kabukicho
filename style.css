@@ -43,3 +43,28 @@ body {
 .section2 {
     background-image: url('https://source.unsplash.com/random/1600x900?city');
 }
+
+.bg-fix{
+	min-height: 600px;
+	width: auto;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	text-shadow: 2px 2px 4px #000;
+}
+@media (max-width: 767px) {
+	.bg-fix {
+		height: auto;
+		width: auto;
+	}
+}
+@media (min-width: 1024px) {
+	.bg-fix {
+		background-attachment: fixed;
+	}
+}

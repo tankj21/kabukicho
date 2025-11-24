@@ -14,7 +14,7 @@ html, body {
 
 /* 画面コンテナ */
 .app-container {
-    max-width: 420px; /* モバイル画面サイズに制限 */
+    max-width: ; /* モバイル画面サイズに制限 */
     height: 100%; /* bodyの高さ全体を占める */
     margin: 0 auto;
     border-left: 1px solid #e5e7eb;
@@ -63,4 +63,32 @@ html, body {
 /* メニュー表示 (hidden クラスが外れたら) */
 #menuModal:not(.hidden) {
     transform: translateX(0);
+}
+.bg-fix{
+	min-height: 600px;
+	width: auto;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	text-shadow: 2px 2px 4px #000;
+}
+@media (max-width: 767px) {
+	.bg-fix {
+		height: auto;
+		width: auto;
+	}
+}
+@media (min-width: 1024px) {
+	.bg-fix {
+		background-attachment: fixed;
+	}
+}
+.img-1 {
+    background-size: cover;
+    background-position: center;
 }
