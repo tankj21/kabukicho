@@ -1,0 +1,66 @@
+/* Interをデフォルト、日本語はNoto Sans JPを優先 */
+body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 画面全体の高さを確保 */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* 画面コンテナ */
+.app-container {
+    max-width: 420px; /* モバイル画面サイズに制限 */
+    height: 100%; /* bodyの高さ全体を占める */
+    margin: 0 auto;
+    border-left: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    overflow: hidden; /* スクロールを内部で制御 */
+    position: relative;
+}
+
+/* ページセクション */
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+    background-color: white; /* ページが重なった時に透けないように */
+}
+
+/* ===== ページ遷移の制御 ===== */
+
+/* メインページと詳細ページのデフォルト状態（表示） */
+#mainPage, #detailPage {
+    transform: translateX(0);
+}
+
+/* メインページ非表示（左へスライド） */
+#mainPage.hidden {
+    transform: translateX(-100%);
+}
+
+/* 詳細ページ非表示（右へスライド） */
+#detailPage.hidden {
+    transform: translateX(100%);
+}
+
+/* メニューモーダル (デフォルトは右側画面外) */
+#menuModal {
+    /* .page のスタイルを継承 */
+    transform: translateX(100%); /* JSのhiddenクラスで制御 */
+    z-index: 50; /* 他のページより手前に表示 */
+}
+
+/* メニュー表示 (hidden クラスが外れたら) */
+#menuModal:not(.hidden) {
+    transform: translateX(0);
+}
