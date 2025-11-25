@@ -279,38 +279,7 @@
         
         const initMap = () => {
 
-            let currentLocationMarker = null;
-            let currentAccuracyCircle = null;
-
-            function onLocationFound(e) {
-                const radius = e.accuracy / 2;
-
-                if (currentLocationMarker) {
-                    map.removeLayer(currentLocationMarker);
-                    map.removeLayer(currentAccuracyCircle);
-                }
-
-                currentLocationMarker = L.marker(e.latlng).addTo(map)
-                    .bindPopup("現在地 (" + Math.round(radius) * "m)").openPopup();
-
-                    currentAccuracyCircle = L.circle(e.latlng, radius).addTo(map);
-
-                    map.setView(e.latlng, 16);
-            }
-
-            function onLocationError(e) {
-                alert("現在地を取得できませんでした。\n(" + e.message + ")");
-            }
-
-            map.on('locationfound', onLocationFound);
-            map.on('locationerror', onLocationError);
-
-            const locationBtn = document.getElementById('current-location-btn');
-            if(locationBtn) {
-                locationBtn.addEventListener('click', () => {
-                    map.locate({setView: true, maxZoom: 16});
-                });
-            }
+            
             // 歌舞伎町の中心座標
             const kabukichoCenter = [35.6945, 139.7020];
             
@@ -382,6 +351,39 @@
                     });
                 }
             });
+
+            let currentLocationMarker = null;
+            let currentAccuracyCircle = null;
+
+            function onLocationFound(e) {
+                const radius = e.accuracy / 2;
+
+                if (currentLocationMarker) {
+                    map.removeLayer(currentLocationMarker);
+                    map.removeLayer(currentAccuracyCircle);
+                }
+
+                currentLocationMarker = L.marker(e.latlng).addTo(map)
+                    .bindPopup("現在地 (" + Math.round(radius) * "m)").openPopup();
+
+                    currentAccuracyCircle = L.circle(e.latlng, radius).addTo(map);
+
+                    map.setView(e.latlng, 16);
+            }
+
+            function onLocationError(e) {
+                alert("現在地を取得できませんでした。\n(" + e.message + ")");
+            }
+
+            map.on('locationfound', onLocationFound);
+            map.on('locationerror', onLocationError);
+
+            const locationBtn = document.getElementById('current-location-btn');
+            if(locationBtn) {
+                locationBtn.addEventListener('click', () => {
+                    map.locate({setView: true, maxZoom: 16});
+                });
+            }
         };
 
         // ==========================================
