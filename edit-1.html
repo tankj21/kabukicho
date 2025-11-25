@@ -219,7 +219,7 @@
             mainPage.classList.remove('hidden');
             window.scrollTo(0, 0);
             
-            // メインに戻ったらプレーヤーを閉じる（任意）
+            // メインに戻ったらプレーヤーを閉じる(任意)
             if(playerCloseBtn) playerCloseBtn.click();
         };
 
@@ -255,15 +255,15 @@
             }, 300);
         };
 
-        // イベント登録：メイン画面のボタン
+        // イベント登録:メイン画面のボタン
         if (mainMenuBtn) {
             mainMenuBtn.addEventListener('click', toggleMenu);
         }
-        // イベント登録：ガイド画面のボタン
+        // イベント登録:ガイド画面のボタン
         if (guideMenuBtn) {
             guideMenuBtn.addEventListener('click', toggleMenu);
         }
-        // イベント登録：閉じるボタン（×ボタン）
+        // イベント登録:閉じるボタン(×ボタン)
         if (menuCloseBtn) {
             menuCloseBtn.addEventListener('click', closeMenu);
         }
@@ -277,7 +277,9 @@
             menuLinkTop.addEventListener('click', (e) => {
                 e.preventDefault(); // リンク動作をキャンセル
                 closeMenu();
-                showMainPage();
+                setTimeout(() => {
+                    showMainPage();
+                }, 400); // メニューが閉じた後に遷移
             });
         }
 
@@ -285,7 +287,9 @@
         if (menuLinkGuide) {
             menuLinkGuide.addEventListener('click', () => {
                 closeMenu();
-                showGuidePage();
+                setTimeout(() => {
+                    showGuidePage();
+                }, 400); // メニューが閉じた後に遷移
             });
         }
         
