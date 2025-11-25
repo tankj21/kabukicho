@@ -13,16 +13,19 @@
 <body id="gradation-simple" class="main">
 
     <main id="main-page" class="w-full">
-    <header id="footer" class="bg-yellow-100 shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="h-12">
-                 <img src="https://github.com/tankj21/kabukicho/blob/main/source/img/kabuki_title.png?raw=true" alt="古今歌舞伎町音声巡り" class="h-full object-contain">
-                </div>
-                <button id="start-guide-btn-main" class="btn-primary hover:text-neutral-400 font-bold py-2 px-4 border border-indigo-900 duration-300">
-                    ガイド開始
-                </button>
-            </nav>
-        </header>
+    <header id="main-header" class="bg-[#232323] border-b-2 border-[#dc4043] sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center relative">
+        <div class="h-12">
+             <img src="https://github.com/tankj21/kabukicho/blob/main/source/img/kabuki_title.png?raw=true" alt="古今歌舞伎町音声巡り" class="h-full w-auto object-contain">
+        </div>
+
+        <button id="menu-toggle-btn" class="text-white focus:outline-none z-50 relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 group">
+            <span class="block w-8 h-0.5 bg-white transition-all duration-300 group-hover:bg-[#dc4043]"></span>
+            <span class="block w-8 h-0.5 bg-white transition-all duration-300 group-hover:bg-[#dc4043]"></span>
+            <span class="block w-8 h-0.5 bg-white transition-all duration-300 group-hover:bg-[#dc4043]"></span>
+        </button>
+    </nav>
+</header>
     <div class="bg-fix bg-2">
         <div class="container mx-auto px-6 mt-100">
             <img src="https://github.com/tankj21/kabukicho/blob/main/source/img/kabuki_title.png?raw=true" alt="古今歌舞伎町音声巡り" class="h-full object-contain mx-auto">
@@ -30,14 +33,14 @@
     </div>
     
     <div class="container mx-auto px-6">
-        <section class="text-center py-20 lg:py-24s">
-            <p class="text-lg max-w-2xl mx-auto mb-20 text-shadows">
+        <section class="text-center py-10 lg:py-24s">
+            <p class="text-lg max-w-2xl mx-auto mb-10 text-shadows">
                 歌舞伎町は、歩くだけでは見破れない。<br>
                 歴史、歓楽、そして未来。<br>
                 そのすべてをあなたの耳に語りかける。
             </p>
             <div class ="flex flex-col items-center justify-center mt-5">
-                <button id="start-guide-btn-hero" class="btn-primary font-black py-8 px-10 border border-indigo-900 text-lg transition duration-300 transform hover:scale-105">
+                <button id="start-guide-btn-hero" class="btn-primary font-black py-6 px-10 border border-indigo-900 text-lg transition duration-300 transform hover:scale-105">
                     今すぐガイドを始める
                 </button>
             </div>
@@ -53,14 +56,19 @@
 </main>
 
     <div id="guide-page" class="hidden w-full min-h-screen flex flex-col">
-        <header id="footer" class="guide-page">
-            <nav id="footer" class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <h1 class="text-2xl font-bold section-title">音声ガイド</h1>
-                <button id="back-to-main-btn" class="bg-gray-200 hover:bg-orange-300 text-white font-bold py-2 px-4 rounded-full transition duration-300">
-                    メインに戻る
-                </button>
-            </nav>
-        </header>
+    <header class="bg-[#232323] border-b-2 border-[#dc4043] sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-white tracking-widest" style="font-family: 'Noto Serif JP', serif;">
+                音声ガイド
+            </h1>
+        
+            <button id="guide-menu-toggle-btn" class="text-white focus:outline-none z-50 relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 group">
+                <span class="block w-8 h-0.5 bg-white transition-all duration-300 group-hover:bg-[#dc4043]"></span>
+                <span class="block w-8 h-0.5 bg-white transition-all duration-300 group-hover:bg-[#dc4043]"></span>
+                <span class="block w-8 h-0.5 bg-white transition-all duration-300 group-hover:bg-[#dc4043]"></span>
+            </button>
+        </nav>
+    </header>
 
         <div class="flex-grow container mx-auto px-6 py-8 flex flex-col lg:flex-row gap-8">
             <div class="w-full lg:w-2/3 h-64 lg:h-auto bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 border-2 border-dashed border-gray-300">
@@ -136,174 +144,233 @@
 
     <audio id="global-audio-player"></audio>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // ページ要素
-            const mainPage = document.getElementById('main-page');
-            const guidePage = document.getElementById('guide-page');
+    <div id="fullscreen-menu" class="fixed inset-0 bg-[#232323] z-40 hidden flex flex-col items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-[url('./source/img/kabukicho2.webp')] opacity-5 pointer-events-none"></div>
+        
+        <ul class="text-center space-y-8 relative z-10">
+            <li>
+                <a href="#" id="menu-link-top" class="menu-link text-2xl font-bold text-white hover:text-[#dc4043] transition-colors duration-300 tracking-widest block py-2">
+                    TOP
+                </a>
+            </li>
+            <li>
+                <button id="menu-start-guide" class="w-full text-center menu-link text-2xl font-bold text-white hover:text-[#dc4043] transition-colors duration-300 tracking-widest block py-2">
+                    GUIDE
+                </button>
+            </li>
+            <li>
+                <a href="#about" class="menu-link text-2xl font-bold text-white hover:text-[#dc4043] transition-colors duration-300 tracking-widest block py-2">
+                    ABOUT PROJECT
+                </a>
+            </li>
+            <li>
+                <a href="#contact" class="menu-link text-2xl font-bold text-white hover:text-[#dc4043] transition-colors duration-300 tracking-widest block py-2">
+                    CONTACT
+                </a>
+            </li>
+        </ul>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // ==========================================
+        // 1. 要素の取得
+        // ==========================================
+        
+        // ページ要素
+        const mainPage = document.getElementById('main-page');
+        const guidePage = document.getElementById('guide-page');
+        
+        // ボタン類
+        const startGuideBtnHero = document.getElementById('start-guide-btn-hero');
+        // メイン・ガイドそれぞれのメニューボタン
+        const mainMenuBtn = document.getElementById('menu-toggle-btn');
+        const guideMenuBtn = document.getElementById('guide-menu-toggle-btn');
+        
+        // メニュー画面とリンク
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const menuLinkTop = document.getElementById('menu-link-top'); // TOPリンク
+        const menuLinkGuide = document.getElementById('menu-start-guide'); // ガイド開始リンク
+        const menuCloseBtn = document.getElementById('menu-close-btn'); // 閉じるボタン
+        
+        // プレーヤー関連
+        const playerBar = document.getElementById('player-bar');
+        const playerImg = document.getElementById('player-img');
+        const playerTitle = document.getElementById('player-title');
+        const playerDesc = document.getElementById('player-desc');
+        const playerPlayPauseBtn = document.getElementById('player-play-pause-btn');
+        const playerCloseBtn = document.getElementById('player-close-btn');
+        const audioPlayer = document.getElementById('global-audio-player');
+        
+        const playButtons = document.querySelectorAll('.play-btn');
+
+        // ==========================================
+        // 2. ページ遷移関数
+        // ==========================================
+        
+        const showGuidePage = () => {
+            mainPage.classList.add('hidden');
+            guidePage.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        };
+
+        const showMainPage = () => {
+            guidePage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+            window.scrollTo(0, 0);
             
-            // 操作ボタン (ページ遷移)
-            const startGuideBtnMain = document.getElementById('start-guide-btn-main');
-            const startGuideBtnHero = document.getElementById('start-guide-btn-hero');
-            const backToMainBtn = document.getElementById('back-to-main-btn');
+            // メインに戻ったらプレーヤーを閉じる（任意）
+            if(playerCloseBtn) playerCloseBtn.click();
+        };
+
+        // ==========================================
+        // 3. メニュー制御 (共通化)
+        // ==========================================
+        
+        // メニューを開閉する関数
+        const toggleMenu = () => {
+            if (!fullscreenMenu) return;
             
-            // プレーヤーバー関連の要素
-            const playerBar = document.getElementById('player-bar');
-            const playerImg = document.getElementById('player-img');
-            const playerTitle = document.getElementById('player-title');
-            const playerDesc = document.getElementById('player-desc');
-            const playerPlayPauseBtn = document.getElementById('player-play-pause-btn');
-            const playerCloseBtn = document.getElementById('player-close-btn');
-
-            // 音声プレーヤー本体
-            const audioPlayer = document.getElementById('global-audio-player');
+            const isHidden = fullscreenMenu.classList.contains('hidden');
             
-            // スポット一覧の再生ボタン (すべて)
-            const playButtons = document.querySelectorAll('.play-btn');
+            if (isHidden) {
+                // Open
+                fullscreenMenu.classList.remove('hidden');
+                setTimeout(() => fullscreenMenu.classList.remove('opacity-0'), 10);
+                document.body.style.overflow = 'hidden'; // スクロール禁止
+            } else {
+                // Close
+                closeMenu();
+            }
+        };
 
-            // 再生状態の管理
-            let currentPlayingButton = null; // 現在再生中のリストボタンを追跡
-
-            // SVGアイコンの定義
-            const playIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>`;
-            const pauseIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6" /></svg>`;
-
-            // --- ページ遷移ロジック ---
-
-            const showGuidePage = () => {
-                mainPage.classList.add('hidden');
-                guidePage.classList.remove('hidden');
-                window.scrollTo(0, 0);
-            };
-
-            const showMainPage = () => {
-                guidePage.classList.add('hidden');
-                mainPage.classList.remove('hidden');
-                window.scrollTo(0, 0);
-            };
-
-            startGuideBtnMain.addEventListener('click', showGuidePage);
-            startGuideBtnHero.addEventListener('click', showGuidePage);
+        // メニューを閉じる関数
+        const closeMenu = () => {
+            if (!fullscreenMenu) return;
             
-            // メインに戻るボタン (音声停止処理を追加)
-            backToMainBtn.addEventListener('click', () => {
+            fullscreenMenu.classList.add('opacity-0');
+            setTimeout(() => {
+                fullscreenMenu.classList.add('hidden');
+                document.body.style.overflow = ''; // スクロール解除
+            }, 300);
+        };
+
+        // イベント登録：メイン画面のボタン
+        if (mainMenuBtn) {
+            mainMenuBtn.addEventListener('click', toggleMenu);
+        }
+        // イベント登録：ガイド画面のボタン
+        if (guideMenuBtn) {
+            guideMenuBtn.addEventListener('click', toggleMenu);
+        }
+        // イベント登録：閉じるボタン（×ボタン）
+        if (menuCloseBtn) {
+            menuCloseBtn.addEventListener('click', closeMenu);
+        }
+
+        // ==========================================
+        // 4. ナビゲーション処理
+        // ==========================================
+
+        // メニュー内の「TOP」クリック
+        if (menuLinkTop) {
+            menuLinkTop.addEventListener('click', (e) => {
+                e.preventDefault(); // リンク動作をキャンセル
+                closeMenu();
                 showMainPage();
-                // プレーヤーバーの閉じるボタンの処理を呼び出す
-                playerCloseBtn.click(); 
             });
+        }
 
-            // --- 音声再生ロジック ---
+        // メニュー内の「ガイドを始める」クリック
+        if (menuLinkGuide) {
+            menuLinkGuide.addEventListener('click', () => {
+                closeMenu();
+                showGuidePage();
+            });
+        }
+        
+        // メインビジュアルのボタン
+        if (startGuideBtnHero) {
+            startGuideBtnHero.addEventListener('click', showGuidePage);
+        }
 
-            // すべてのリスト再生ボタンのアイコンを「再生▶」に戻す関数
-            const resetAllPlayButtons = () => {
-                playButtons.forEach(btn => {
-                    btn.innerHTML = playIconSvg;
-                });
-            };
+        // ==========================================
+        // 5. 音声再生ロジック
+        // ==========================================
+        let currentPlayingButton = null;
+        const playIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>`;
+        const pauseIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6" /></svg>`;
 
-            // スポットリストの各再生ボタンの処理
+        const resetAllPlayButtons = () => {
+            playButtons.forEach(btn => btn.innerHTML = playIconSvg);
+        };
+
+        if (playButtons.length > 0) {
             playButtons.forEach(button => {
                 button.addEventListener('click', (e) => {
-                    e.stopPropagation(); // 親要素（カード）のクリックイベントを発火させない
-
+                    e.stopPropagation();
                     const card = e.currentTarget.closest('.card');
-                    const audioSrc = card.dataset.audioSrc; // data-audio-src属性からパスを取得
+                    const audioSrc = card.dataset.audioSrc;
+                    
+                    if (!audioSrc) return;
 
-                    if (!audioSrc) {
-                        console.error('音声ファイルが指定されていません。', card);
-                        return;
-                    }
-
-                    // プレーヤーバーに情報を設定して表示
                     const title = card.querySelector('h3').textContent;
                     const desc = card.querySelector('p').textContent;
                     const imgSrc = card.querySelector('img').src;
                     
-                    playerTitle.textContent = title;
-                    playerDesc.textContent = desc;
-                    playerImg.src = imgSrc;
-                    playerBar.classList.remove('hidden');
+                    if(playerTitle) playerTitle.textContent = title;
+                    if(playerDesc) playerDesc.textContent = desc;
+                    if(playerImg) playerImg.src = imgSrc;
+                    if(playerBar) playerBar.classList.remove('hidden');
 
-                    // --- 音声再生の制御 ---
-
-                    // 1. 今回押されたボタンが、再生中のボタンと同じか？
                     if (currentPlayingButton === button) {
-                        // (A) 再生/一時停止 のトグル
-                        if (audioPlayer.paused) {
-                            audioPlayer.play();
-                        } else {
-                            audioPlayer.pause();
-                        }
+                        if (audioPlayer.paused) audioPlayer.play();
+                        else audioPlayer.pause();
                     } else {
-                        // (B) 別の曲を再生する
-                        
-                        // まず、他のすべてのリストボタンのアイコンをリセット
                         resetAllPlayButtons();
-                        
-                        // 新しい音声ソースを設定して再生
                         audioPlayer.src = audioSrc;
                         audioPlayer.play();
-                        
-                        // 現在再生中のリストボタンを更新
                         currentPlayingButton = button;
                     }
                 });
             });
-            
-            // --- プレーヤーバーのボタン制御 ---
-            
-            // プレーヤーバーの再生/一時停止ボタン
-            playerPlayPauseBtn.addEventListener('click', () => {
-                if (!audioPlayer.src) return; // 音声が読み込まれていなければ何もしない
+        }
 
-                if (audioPlayer.paused) {
-                    audioPlayer.play();
-                } else {
-                    audioPlayer.pause();
-                }
+        if (playerPlayPauseBtn) {
+            playerPlayPauseBtn.addEventListener('click', () => {
+                if (!audioPlayer.src) return;
+                if (audioPlayer.paused) audioPlayer.play();
+                else audioPlayer.pause();
             });
-            
-            // プレーヤーバーの閉じるボタン
+        }
+
+        if (playerCloseBtn) {
             playerCloseBtn.addEventListener('click', () => {
                 audioPlayer.pause();
                 audioPlayer.currentTime = 0;
-                audioPlayer.src = ""; // ソースを空にする
-                
-                playerBar.classList.add('hidden');
+                audioPlayer.src = "";
+                if(playerBar) playerBar.classList.add('hidden');
                 resetAllPlayButtons();
                 currentPlayingButton = null;
             });
-            
-            // --- グローバルオーディオプレーヤーの状態変更をUIに反映 ---
-            
-            // 再生が開始されたとき (play イベント)
-            audioPlayer.addEventListener('play', () => {
-                playerPlayPauseBtn.innerHTML = pauseIconSvg;
-                if (currentPlayingButton) {
-                    currentPlayingButton.innerHTML = pauseIconSvg;
-                }
-            });
-            
-            // 一時停止されたとき (pause イベント)
-            audioPlayer.addEventListener('pause', () => {
-                playerPlayPauseBtn.innerHTML = playIconSvg;
-                if (currentPlayingButton) {
-                    currentPlayingButton.innerHTML = playIconSvg;
-                }
-            });
-            
-            // 再生終了したとき (ended イベント)
-            audioPlayer.addEventListener('ended', () => {
-                playerPlayPauseBtn.innerHTML = playIconSvg;
-                if (currentPlayingButton) {
-                    currentPlayingButton.innerHTML = playIconSvg;
-                }
-                currentPlayingButton = null;
-                // 終了したらバーを自動で閉じる（オプション）
-                // playerCloseBtn.click();
-            });
+        }
 
+        audioPlayer.addEventListener('play', () => {
+            if(playerPlayPauseBtn) playerPlayPauseBtn.innerHTML = pauseIconSvg;
+            if (currentPlayingButton) currentPlayingButton.innerHTML = pauseIconSvg;
         });
-    </script>
+
+        audioPlayer.addEventListener('pause', () => {
+            if(playerPlayPauseBtn) playerPlayPauseBtn.innerHTML = playIconSvg;
+            if (currentPlayingButton) currentPlayingButton.innerHTML = playIconSvg;
+        });
+
+        audioPlayer.addEventListener('ended', () => {
+            if(playerPlayPauseBtn) playerPlayPauseBtn.innerHTML = playIconSvg;
+            if (currentPlayingButton) currentPlayingButton.innerHTML = playIconSvg;
+            currentPlayingButton = null;
+        });
+    });
+</script>
 </body>
 </html>
