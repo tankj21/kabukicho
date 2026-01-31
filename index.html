@@ -119,13 +119,13 @@
         
 
             <div class="w-full lg:w-1/3">
-                <h2 class="text-2xl font-bold mb-4 section-title">スポット一覧</h2>
+                <h2 class="text-2xl font-bold mb-4 section-title" style="font-family: Arial, Helvetica, sans-serif;">スポット一覧</h2>
                 <div class="space-y-4 max-h-[calc(100vh-250px)] overflow-y-auto pr-2">
                     
                     <div class="card p-4 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-[#262626] hover:border-[#dc4043] hover:text-white transition-all duration-300 group" 
                          data-audio-src="source/Audio/001_test.wav"
-                         data-lat="35.6945"
-                         data-lng="139.7007"
+                         data-lat="35.6939823"
+                         data-lng="139.700963"
                          data-spot-id="spot1">
                         <img src="https://placehold.co/100x100/f0f2f5/FF69B4?text=ゴジラ" alt="ゴジラヘッド" class="w-20 h-20 rounded-md object-cover">
                         <div class="flex-grow">
@@ -139,8 +139,8 @@
                     
                     <div class="card p-4 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-[#262626] hover:border-[#dc4043] hover:text-white transition-all duration-300 group" 
                          data-audio-src="source/Audio/spot2.mp3"
-                         data-lat="35.6938"
-                         data-lng="139.7025"
+                         data-lat="35.694062"
+                         data-lng="139.701475"
                          data-spot-id="spot2">
                         <img src="https://placehold.co/100x100/f0f2f5/FF69B4?text=ゴールデン街" alt="新宿ゴールデン街" class="w-20 h-20 rounded-md object-cover">
                         <div class="flex-grow">
@@ -154,8 +154,8 @@
                     
                     <div class="card p-4 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-[#262626] hover:border-[#dc4043] hover:text-white transition-all duration-300 group" 
                          data-audio-src="source/Audio/spot3.mp3"
-                         data-lat="35.6952"
-                         data-lng="139.7035"
+                         data-lat="35.694583"
+                         data-lng="139.701199"
                          data-spot-id="spot3">
                         <img src="https://placehold.co/100x100/f0f2f5/FF69B4?text=稲荷鬼王神社" alt="稲荷鬼王神社" class="w-20 h-20 rounded-md object-cover">
                         <div class="flex-grow">
@@ -169,8 +169,8 @@
                     
                     <div class="card p-4 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-[#262626] hover:border-[#dc4043] hover:text-white transition-all duration-300 group" 
                          data-audio-src="src/Audio/spot4.mp3"
-                         data-lat="35.6955"
-                         data-lng="139.7015"
+                         data-lat="35.696602"
+                         data-lng="139.702092"
                          data-spot-id="spot4">
                         <img src="https://placehold.co/100x100/f0f2f5/FF69B4?text=東急歌舞伎町タワー" alt="東急歌舞伎町タワー" class="w-20 h-20 rounded-md object-cover">
                         <div class="flex-grow">
@@ -341,10 +341,10 @@
 
             
             // 歌舞伎町の中心座標
-            const kabukichoCenter = [35.6945, 139.7020];
+            const kabukichoCenter = [35.695332,139.701800];
             
             // マップを初期化
-            map = L.map('map').setView(kabukichoCenter, 16);
+            map = L.map('map').setView(kabukichoCenter, 18);
             
             // OpenStreetMapのタイルレイヤーを追加
             L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
